@@ -1,0 +1,20 @@
+{
+	"dev": {
+		"IOT_POLICY":"some-iot-policy-name",
+		"THING_TYPE":"some-thing-type-name",
+		"USER_POOL_ID":"some-user-pool-id",
+		"IDENTITY_POOL_ID":"some-identity-pool-id",
+		"COGNITO_APP_CLIENT_ID":"some-app-client-id",
+		"COGNITO_TOKEN_PROVIDER":"some-cognito-token-provider-id",
+		"TABLE":"some-dynamo-table-name"
+	},
+	"hml": {
+		"IOT_POLICY":"some-iot-policy-name",
+		"THING_TYPE":"some-thing-type-name",
+		"USER_POOL_ID":"some-user-pool-id",
+		"IDENTITY_POOL_ID":"some-identity-pool-id",
+		"COGNITO_APP_CLIENT_ID":"some-app-client-id",
+		"COGNITO_TOKEN_PROVIDER":"some-cognito-token-provider-id",
+		"TABLE":"some-dynamo-table-name"
+	}
+}
