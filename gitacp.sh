@@ -17,7 +17,7 @@ FILE=$1
 COMMIT_MESSAGE=$2
 PUSH=$3
 
-[ -f $FILE ] || die "File $FILE does not exist"
+([ -f $FILE ] || [ -d $FILE ]) || die "File $FILE does not exist"
 
 if [ ! -z "$PUSH" ] && [ "$PUSH" != "-p" ]; then
     die "third argument, if existent, must be '-p', and not '$PUSH'"
