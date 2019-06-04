@@ -1,5 +1,5 @@
 #!/bin/bash
-# gitacp.sh - runs git add and commit for a file or directory then runs git push (optional - if '-p' is used)
+# gitacp.sh - runs git add and commit for a file or directory then runs git push (disabled if '-p' is used)
 
 function usage {
     echo "Usage: $(basename $0) <filename> <commit_message> [-p]"    
@@ -17,7 +17,7 @@ FILE=$1
 COMMIT_MESSAGE=$2
 PUSH=$3
 
-([ -f $FILE ] || [ -d $FILE ]) || die "File $FILE does not exist"
+#([ -f $FILE ] || [ -d $FILE ]) || die "File $FILE does not exist"
 
 if [ ! -z "$PUSH" ] && [ "$PUSH" != "-p" ]; then
     die "third argument, if existent, must be '-p', and not '$PUSH'"
@@ -30,7 +30,9 @@ echo done
 echo "Invoking git commit for file $FILE..."
 git commit -m "$COMMIT_MESSAGE" || die "git commit has failed."
 
-if [ ! -z "$PUSH" ]; then
+if [ -z "$PUSH" ]; then
+    echo "Invoking git pull..."
+    git pull || die "git pull has failed."
     echo "Invoking git push..."
     git push || die 'git push has failed.'
 fi
