@@ -1,0 +1,82 @@
+{
+  // ✅ Jest: run via yarn to avoid mis‑resolved binaries
+  "jest.jestCommandLine": "node ./node_modules/jest/bin/jest.js",
+  // ✅ Optional: disable automatic test explorer refresh if Jest is heavy
+  "testing.automaticallyOpenTestResults": "neverOpen",
+
+  // ✅ Optional: reduce editor load in massive repos
+  "editor.largeFileOptimizations": true,
+
+  // Recommended ESLint settings for monorepos to improve performance
+  // - Use Yarn as package manager
+  // - Only run ESLint on save, not on type
+  // - Let the extension auto-detect package roots (packages/services)
+  // - Limit validation to JS/TS files
+  // - Avoid calculating config for unrelated folders
+
+  // Use Yarn workspace auto detection so the extension only activates
+  "eslint.run": "onSave",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // ✅ Prettier: use as default formatter and format on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2, 
+    "editor.insertSpaces": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2, 
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // ✅ TypeScript: cap memory to avoid runaway OOM kills
+  // Adjust between 2048–4096 depending on repo size and WSL memory cap
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.tsserver.useSyntaxServer": "auto",
+  "typescript.tsserver.watchOptions": "vscode",
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // ✅ File watcher exclusions: prevent scanning huge folders
+  "files.watcherExclude": {
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.git/**": true,
+    "**/.cache/**": true,
+    "**/coverage/**": true
+  },
+
+  // ✅ Search exclusions: keep search fast and lightweight
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.git": true,
+    "**/.cache": true
+  },
+
+  // GitHub PR extension: 
+  "githubPullRequests.fileListLayout": "tree",
+  "githubPullRequests.fileAutoReveal": true,
+  "githubPullRequests.remotes": ["origin"],
+}
